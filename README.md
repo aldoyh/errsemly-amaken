@@ -1,6 +1,6 @@
 # Run and deploy your AI Studio app
 
-![Screenshot](Screenshot.jpeg)
+![Screenshot](https://github.com/aldoyh/errsemly-amaken/raw/main/Screenshot.jpeg)
 
 This contains everything you need to run your app locally.
 

@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #f9fafb; /* gray-50 */
+  --bg-secondary: #ffffff; /* white */
+  --text-primary: #111827; /* gray-900 */
+  --text-secondary: #4b5563; /* gray-600 */
+  --border-color: #d1d5db; /* gray-300 */
+  --input-bg: #f9fafb; /* gray-50 */
+}
+
+.dark {
+  --bg-primary: #111827; /* gray-900 */
+  --bg-secondary: #1f2937; /* gray-800 */
+  --text-primary: #f9fafb; /* gray-50 */
+  --text-secondary: #9ca3af; /* gray-400 */
+  --border-color: #4b5563; /* gray-600 */
+  --input-bg: #374151; /* gray-700 */
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* Styling for Google Places Autocomplete dropdown */
+.pac-container {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+.pac-item {
+  color: var(--text-secondary) !important;
+  border-top: 1px solid var(--border-color) !important;
+  padding: 0.5rem 1rem !important;
+  cursor: pointer;
+}
+.pac-item:hover {
+  background-color: var(--input-bg) !important;
+}
+.pac-item-query {
+  color: var(--text-primary) !important;
+}
+.pac-matched {
+  color: var(--text-primary) !important;
+}
+
+/* Glowing border effect for dark mode */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-glow {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.glowing-border {
+  position: relative;
+}
+
+.dark .glowing-border::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -3px; /* Controls the thickness of the border glow */
+  border-radius: 1.1rem; /* Slightly larger than parent's rounded-2xl (1rem) */
+  background: conic-gradient(
+    from var(--angle),
+    #3b82f6, /* blue-500 */
+    #8b5cf6, /* violet-500 */
+    #ec4899, /* pink-500 */
+    #8b5cf6, /* violet-500 */
+    #3b82f6  /* blue-500 */
+  );
+  filter: blur(12px); /* Creates the soft glow effect */
+  opacity: 0.7;
+  animation: rotate-glow 8s linear infinite;
+}
